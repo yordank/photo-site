@@ -1,0 +1,15 @@
+---
+title: Статии
+permalink: /blog/
+---
+<section class="section section--top">
+  <div class="page-head">
+    <h1>Статии</h1>
+    <p>Истории зад кадрите, съвети и впечатления от снимки.</p>
+  </div>
+  {% if site.posts.size > 0 %}
+  <div class="cards">
+    {% for post in site.posts %}{% include post-card.html post=post %}{% endfor %}
+  </div>
+  {% else %}<p class="empty">Все още няма статии.</p>{% endif %}
+</section>

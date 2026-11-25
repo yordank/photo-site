@@ -1,0 +1,17 @@
+---
+title: Галерия
+permalink: /gallery/
+---
+{% assign photos = site.photos | sort: "date" | reverse %}
+{% assign cats = photos | map: "category" | uniq %}
+<section class="section section--top">
+  <div class="page-head">
+    <h1>Галерия</h1>
+    <p>{{ photos.size }} кадъра. Натиснете снимка, за да я разгледате на цял екран.</p>
+  </div>
+  <div class="filters" role="tablist">
+    <button class="is-active" data-filter="*">Всички</button>
+    {% for c in cats %}{% if c %}<button data-filter="{{ c }}">{{ c }}</button>{% endif %}{% endfor %}
+  </div>
+  {% include photo-grid.html photos=photos %}
+</section>

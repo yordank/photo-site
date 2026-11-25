@@ -1,0 +1,65 @@
+backend:
+  name: github
+  repo: yordank/photo-site
+  branch: main
+  commit_messages:
+    create: "Добавено: {{collection}} „{{slug}}“"
+    update: "Обновено: {{collection}} „{{slug}}“"
+    delete: "Изтрито: {{collection}} „{{slug}}“"
+    uploadMedia: "Качен файл {{path}}"
+
+site_url: https://yordank.github.io/photo-site
+display_url: https://yordank.github.io/photo-site
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: photos
+    label: Снимки
+    label_singular: Снимка
+    folder: _photos
+    create: true
+    slug: "{{year}}{{month}}{{day}}-{{slug}}"
+    sortable_fields: [date, title, category]
+    summary: "{{title}} · {{category}}"
+    fields:
+      - { name: title, label: Заглавие, widget: string }
+      - { name: image, label: Снимка, widget: image }
+      - name: category
+        label: Категория
+        widget: select
+        options: [Портрет, Пейзаж, Улична, Природа, Сватби, Събития]
+      - { name: date, label: Дата, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { name: featured, label: "Показвай на началната страница", widget: boolean, default: false }
+      - { name: description, label: Описание, widget: text, required: false }
+
+  - name: posts
+    label: Статии
+    label_singular: Статия
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Заглавие, widget: string }
+      - { name: date, label: Дата, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { name: cover, label: Корична снимка, widget: image, required: false }
+      - { name: body, label: Текст, widget: markdown }
+
+  - name: settings
+    label: Настройки
+    files:
+      - name: general
+        label: Общи настройки
+        file: _data/settings.yml
+        fields:
+          - { name: site_title, label: Име на сайта, widget: string }
+          - { name: tagline, label: Подзаглавие, widget: string }
+          - { name: hero_image, label: Голяма снимка на началната страница, widget: image }
+          - { name: about_title, label: Заглавие „За мен“, widget: string }
+          - { name: about_text, label: Текст „За мен“, widget: markdown }
+          - { name: about_image, label: Снимка „За мен“, widget: image, required: false }
+          - { name: email, label: Имейл, widget: string, required: false }
+          - { name: instagram, label: Instagram линк, widget: string, required: false }
+          - { name: facebook, label: Facebook линк, widget: string, required: false }

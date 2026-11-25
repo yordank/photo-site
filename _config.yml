@@ -1,0 +1,21 @@
+# Основни настройки на сайта
+title: "Светлина и сянка"
+description: "Фотография — портрети, пейзажи и истории в кадър."
+lang: bg
+url: "https://yordank.github.io"
+baseurl: "/photo-site"
+
+permalink: /blog/:year/:month/:title/
+
+collections:
+  photos:
+    output: false
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { layout: default }
+
+markdown: kramdown
+exclude: [README.md, Gemfile, Gemfile.lock, vendor]

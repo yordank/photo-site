@@ -1,0 +1,10 @@
+{% comment %} Masonry gallery. Pass photos=... {% endcomment %}
+<div class="grid">
+  {% for p in include.photos %}
+  {% assign src = p.image | relative_url %}
+  <a class="tile" href="{{ src }}" data-category="{{ p.category }}" data-title="{{ p.title }}" data-desc="{{ p.description }}">
+    <img src="{{ src }}" alt="{{ p.title }}" loading="lazy">
+    <span class="tile__meta"><strong>{{ p.title }}</strong><em>{{ p.category }}</em></span>
+  </a>
+  {% endfor %}
+</div>

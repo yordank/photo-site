@@ -1,0 +1,10 @@
+{% assign post = include.post %}
+<a class="card" href="{{ post.url | relative_url }}">
+  {% if post.cover %}<div class="card__img"><img src="{{ post.cover | relative_url }}" alt="" loading="lazy"></div>{% endif %}
+  <div class="card__body">
+    <time>{{ post.date | date: '%d.%m.%Y' }}</time>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.excerpt | strip_html | truncatewords: 26 }}</p>
+    <span class="more">Прочети →</span>
+  </div>
+</a>

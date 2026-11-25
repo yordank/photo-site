@@ -1,0 +1,38 @@
+---
+body_class: home
+---
+{% assign s = site.data.settings %}
+<section class="hero" style="--hero: url('{{ s.hero_image | relative_url }}')">
+  <div class="hero__inner">
+    <p class="eyebrow">Фотография</p>
+    <h1>{{ s.site_title }}</h1>
+    <p class="lead">{{ s.tagline }}</p>
+    <div class="hero__cta">
+      <a class="btn" href="{{ '/gallery/' | relative_url }}">Виж галерията</a>
+      <a class="btn btn--ghost" href="{{ '/blog/' | relative_url }}">Статии</a>
+    </div>
+  </div>
+  <span class="hero__scroll" aria-hidden="true"></span>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <h2>Избрани кадри</h2>
+    <a href="{{ '/gallery/' | relative_url }}">Цялата галерия →</a>
+  </div>
+  {% assign featured = site.photos | where: "featured", true | sort: "date" | reverse %}
+  {% if featured.size == 0 %}{% assign featured = site.photos | sort: "date" | reverse %}{% endif %}
+  {% include photo-grid.html photos=featured %}
+</section>
+
+{% if site.posts.size > 0 %}
+<section class="section section--alt">
+  <div class="section__head">
+    <h2>Последни статии</h2>
+    <a href="{{ '/blog/' | relative_url }}">Всички статии →</a>
+  </div>
+  <div class="cards">
+    {% for post in site.posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
+  </div>
+</section>
+{% endif %}

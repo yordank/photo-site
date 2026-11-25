@@ -1,0 +1,13 @@
+---
+title: За мен
+permalink: /about/
+---
+{% assign s = site.data.settings %}
+<section class="section section--top about">
+  {% if s.about_image %}<img class="about__img" src="{{ s.about_image | relative_url }}" alt="">{% endif %}
+  <div>
+    <h1>{{ s.about_title | default: "За мен" }}</h1>
+    <div class="prose">{{ s.about_text | markdownify }}</div>
+    {% if s.email %}<a class="btn" href="mailto:{{ s.email }}">Свържете се с мен</a>{% endif %}
+  </div>
+</section>

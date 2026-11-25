@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article class="article">
+  {% if page.cover %}<div class="article__cover"><img src="{{ page.cover | relative_url }}" alt="{{ page.title }}"></div>{% endif %}
+  <header class="article__head">
+    <a class="back" href="{{ '/blog/' | relative_url }}">← Всички статии</a>
+    <h1>{{ page.title }}</h1>
+    <time>{{ page.date | date: '%d.%m.%Y' }}</time>
+  </header>
+  <div class="prose">{{ content }}</div>
+</article>
