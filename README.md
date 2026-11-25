@@ -31,3 +31,9 @@
 bundle install
 bundle exec jekyll serve
 ```
+
+## Railway
+
+Същият сайт може да работи и в Railway. Railway използва `Dockerfile`: сглобява сайта с Jekyll (с `_config.railway.yml`, за да е в корена на домейна) и го сервира с nginx. Всяка промяна от админ панела стига до GitHub, а оттам Railway публикува отново автоматично.
+
+В Railway: Settings → Networking → **Generate Domain**, за да получи сайтът публичен адрес. Админ панелът е на `<адрес>/admin/`.
